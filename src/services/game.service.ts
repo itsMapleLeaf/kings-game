@@ -1,10 +1,10 @@
 import { IncomingMessage } from "http"
 import WebSocket from "ws"
 
-import { Game, GameID } from "./game.model"
-import { Player } from "./user.model"
+import { Game, GameID } from "../models/game.model"
+import { Player } from "../models/user.model"
 
-export class GameServer {
+export class GameService {
   private server = new WebSocket.Server({ port: 4000 })
   private games = new Map<GameID, Game>()
 
