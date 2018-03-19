@@ -1,5 +1,5 @@
 node_modules
 .vscode
 notes.md
-
 *.log*
+.idea
