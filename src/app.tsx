@@ -1,12 +1,12 @@
 import express from "express"
-import {resolve} from "path"
+import { resolve } from "path"
 import * as React from "react"
-import {renderToString} from "react-dom/server"
+import { renderToString } from "react-dom/server"
 
-import {GameNotFoundPage} from "./views/game-not-found.view"
-import {GameService} from "./services/game.service"
-import {GamePage} from "./views/game.view"
-import {HomePage} from "./views/home.view"
+import { GameService } from "./services/game.service"
+import { GameNotFoundPage } from "./views/game-not-found.view"
+import { GamePage } from "./views/game.view"
+import { HomePage } from "./views/home.view"
 
 export function run() {
   const app = express()
