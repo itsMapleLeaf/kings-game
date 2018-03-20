@@ -10,6 +10,7 @@ import { GamePage } from "./views/game.view"
 import { HomePage } from "./views/home.view"
 import { Player } from "./models/user.model"
 import { Game } from "./models/game.model"
+import { shuffle } from "./helpers"
 
 export function run() {
   const app = express()
@@ -84,6 +85,16 @@ export function run() {
           player.ready = true
         }
         if (game) {
+          if (game.allPlayersReady()) {
+            const clients = game.getPlayerClients()
+            shuffle(clients)
+
+            for (const [index, otherClient] of clients.entries()) {
+              const drawing = index === 0 ? "king" : String(index)
+              otherClient.send(JSON.stringify({ type: "show-drawing", drawing }))
+            }
+          }
+
           for (const otherClient of game.getPlayerClients()) {
             otherClient.send(
               JSON.stringify({

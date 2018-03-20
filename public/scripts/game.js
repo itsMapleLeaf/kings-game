@@ -33,6 +33,12 @@ socket.onmessage = message => {
       break
     }
 
+    case "show-drawing": {
+      const drawingDisplay = document.querySelector("#drawing")
+      drawingDisplay.innerText = `Your drawing is: ${command.drawing}`
+      break
+    }
+
     case "error": {
       window.alert(`Socket error: ${command.message}`)
       break

@@ -27,4 +27,8 @@ export class Game {
   getPlayerClients(): WebSocket[] {
     return [...this.players.keys()]
   }
+
+  allPlayersReady(): boolean {
+    return this.getPlayers().every(player => player.ready)
+  }
 }

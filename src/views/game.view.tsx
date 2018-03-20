@@ -9,6 +9,7 @@ export function GamePage({ game }: { game: Game }) {
       <button id="ready-button">Ready</button>
       <h3>players:</h3>
       <ul id="player-list" />
+      <div id="drawing" />
       <script data-game-id={game.id} src="/public/scripts/game.js" />
     </Layout>
   )
