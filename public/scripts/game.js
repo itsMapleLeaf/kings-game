@@ -27,7 +27,9 @@ socket.onmessage = message => {
   switch (command.type) {
     case "update-players": {
       const playerList = document.querySelector("#player-list")
-      playerList.innerHTML = command.players.map(player => `<li>${player.name}</li>`).join("")
+      playerList.innerHTML = command.players
+        .map(player => `<li>${player.name} - ${player.ready ? "ready" : "not ready"}</li>`)
+        .join("")
       break
     }
 
@@ -37,3 +39,14 @@ socket.onmessage = message => {
     }
   }
 }
+
+const readyButton = document.querySelector("#ready-button")
+
+readyButton.addEventListener("click", () => {
+  socket.send(
+    JSON.stringify({
+      type: "ready-up",
+    }),
+  )
+  readyButton.disabled = true
+})

@@ -79,6 +79,20 @@ export function run() {
             }),
           )
         }
+      } else if (command.type === "ready-up") {
+        if (player) {
+          player.ready = true
+        }
+        if (game) {
+          for (const otherClient of game.getPlayerClients()) {
+            otherClient.send(
+              JSON.stringify({
+                type: "update-players",
+                players: game.getPlayers(),
+              }),
+            )
+          }
+        }
       } else {
         console.log(`[${ip}] received invalid message: ${data}`)
       }
