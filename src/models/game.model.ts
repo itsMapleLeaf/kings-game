@@ -1,6 +1,6 @@
 import WebSocket from "ws"
 
-import { Player } from "./user.model"
+import { Player } from "./player.model"
 
 export type GameID = string
 

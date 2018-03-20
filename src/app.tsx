@@ -8,7 +8,7 @@ import { GameManager } from "./models/game-manager.model"
 import { GameNotFoundPage } from "./views/game-not-found.view"
 import { GamePage } from "./views/game.view"
 import { HomePage } from "./views/home.view"
-import { Player } from "./models/user.model"
+import { Player } from "./models/player.model"
 import { Game } from "./models/game.model"
 import { shuffle } from "./helpers"
 
