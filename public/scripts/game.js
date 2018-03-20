@@ -1,5 +1,9 @@
 const gameId = document.currentScript.dataset.gameId
 
+const drawingDisplay = document.querySelector("#drawing")
+const playerListDisplay = document.querySelector("#player-list")
+const readyButton = document.querySelector("#ready-button")
+
 // let name = window.prompt("Your name?")
 // while (!name) {
 //   name = window.prompt("Please enter a valid name.")
@@ -8,8 +12,6 @@ const gameId = document.currentScript.dataset.gameId
 const name = "testname" + Math.random()
 
 const socket = new WebSocket("ws://localhost:4000")
-
-const players = []
 
 socket.onopen = () => {
   socket.send(
@@ -26,8 +28,7 @@ socket.onmessage = message => {
 
   switch (command.type) {
     case "update-players": {
-      const playerList = document.querySelector("#player-list")
-      playerList.innerHTML = command.players
+      playerListDisplay.innerHTML = command.players
         .map(player => `<li>${player.name} - ${player.ready ? "ready" : "not ready"}</li>`)
         .join("")
       break
@@ -45,8 +46,6 @@ socket.onmessage = message => {
     }
   }
 }
-
-const readyButton = document.querySelector("#ready-button")
 
 readyButton.addEventListener("click", () => {
   socket.send(
