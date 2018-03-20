@@ -47,6 +47,11 @@ socket.onmessage = message => {
   }
 }
 
+socket.onclose = () => {
+  window.alert("Socket connection lost. Returning to home...")
+  window.location.assign("/")
+}
+
 readyButton.addEventListener("click", () => {
   socket.send(
     JSON.stringify({
