@@ -34,8 +34,8 @@ socket.onmessage = message => {
     }
 
     case "show-drawing": {
-      const drawingDisplay = document.querySelector("#drawing")
       drawingDisplay.innerText = `Your drawing is: ${command.drawing}`
+      readyButton.disabled = false
       break
     }
 

@@ -92,6 +92,11 @@ export function run() {
             for (const [index, otherClient] of clients.entries()) {
               const drawing = index === 0 ? "king" : String(index)
               otherClient.send(JSON.stringify({ type: "show-drawing", drawing }))
+
+              const player = game.getPlayer(otherClient)
+              if (player) {
+                player.ready = false
+              }
             }
           }
 
