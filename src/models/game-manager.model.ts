@@ -1,6 +1,6 @@
-import { Game, GameID } from "../models/game.model"
+import { Game, GameID } from "./game.model"
 
-export class GameService {
+export class GameManager {
   private games = new Map<GameID, Game>()
 
   createGame(): Game {

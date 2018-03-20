@@ -4,7 +4,7 @@ import * as React from "react"
 import { renderToString } from "react-dom/server"
 import WebSocket from "ws"
 
-import { GameService } from "./services/game.service"
+import { GameManager } from "./models/game-manager.model"
 import { GameNotFoundPage } from "./views/game-not-found.view"
 import { GamePage } from "./views/game.view"
 import { HomePage } from "./views/home.view"
@@ -14,7 +14,7 @@ import { Game } from "./models/game.model"
 export function run() {
   const app = express()
   const port = Number(process.env.PORT) || 3000
-  const gameService = new GameService()
+  const gameService = new GameManager()
 
   app.get("/", (req, res) => {
     res.send(renderToString(<HomePage />))
