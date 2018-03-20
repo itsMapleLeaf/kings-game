@@ -4,13 +4,13 @@ import * as React from "react"
 import { renderToString } from "react-dom/server"
 import WebSocket from "ws"
 
+import { shuffle } from "./helpers"
 import { GameManager } from "./models/game-manager.model"
+import { Game } from "./models/game.model"
+import { Player } from "./models/player.model"
 import { GameNotFoundPage } from "./views/game-not-found.view"
 import { GamePage } from "./views/game.view"
 import { HomePage } from "./views/home.view"
-import { Player } from "./models/player.model"
-import { Game } from "./models/game.model"
-import { shuffle } from "./helpers"
 
 export function run() {
   const app = express()
