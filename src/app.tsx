@@ -15,19 +15,19 @@ import { shuffle } from "./helpers"
 export function run() {
   const app = express()
   const port = Number(process.env.PORT) || 3000
-  const gameService = new GameManager()
+  const gameManager = new GameManager()
 
   app.get("/", (req, res) => {
     res.send(renderToString(<HomePage />))
   })
 
   app.get("/games/create", (req, res) => {
-    const game = gameService.createGame()
+    const game = gameManager.createGame()
     res.redirect("/games/" + game.id)
   })
 
   app.get("/games/:id", (req, res) => {
-    const game = gameService.getGame(req.params.id)
+    const game = gameManager.getGame(req.params.id)
     if (game) {
       res.send(renderToString(<GamePage game={game} />))
     } else {
@@ -55,7 +55,7 @@ export function run() {
 
       if (command.type === "join-game") {
         const { id, name } = command
-        game = gameService.getGame(id)
+        game = gameManager.getGame(id)
 
         if (!game) {
           client.send(
