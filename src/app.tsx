@@ -128,6 +128,8 @@ export function run() {
           )
         }
       }
+
+      client.removeAllListeners()
     })
   })
 }
