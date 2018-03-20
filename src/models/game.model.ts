@@ -16,7 +16,15 @@ export class Game {
     this.players.delete(socket)
   }
 
+  getPlayer(socket: WebSocket): Player | undefined {
+    return this.players.get(socket)
+  }
+
   getPlayers(): Player[] {
     return [...this.players.values()]
+  }
+
+  getPlayerClients(): WebSocket[] {
+    return [...this.players.keys()]
   }
 }

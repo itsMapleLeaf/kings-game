@@ -1,9 +1,11 @@
 const gameId = document.currentScript.dataset.gameId
 
-let name = window.prompt("Your name?")
-while (!name) {
-  name = window.prompt("Please enter a valid name.")
-}
+// let name = window.prompt("Your name?")
+// while (!name) {
+//   name = window.prompt("Please enter a valid name.")
+// }
+
+const name = "testname" + Math.random()
 
 const socket = new WebSocket("ws://localhost:4000")
 
